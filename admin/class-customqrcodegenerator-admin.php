@@ -95,9 +95,6 @@ class Customqrcodegenerator_Admin {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-
-		wp_enqueue_script( 'main-jquery-js', plugin_dir_url( __FILE__ ) . 'js/jquery-min.js', array( 'jquery' ), $this->version, true );
-		wp_enqueue_script( 'jquery-custom-qr', plugin_dir_url( __FILE__ ) . 'js/jqueryqrcode.js', array( 'jquery' ), $this->version, true );
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/customqrcodegenerator-admin.js', array( 'jquery' ), $this->version, true );
 
 	}

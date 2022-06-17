@@ -30,3 +30,31 @@
 	 */
 
 })( jQuery );
+
+jQuery(document).ready(function(){
+	//empty previous QR code
+	jQuery('#qrcode').empty(); 
+
+	/* Apply height width*/
+	jQuery('#qrcode').css({
+		'width' : jQuery('.qr-size').val(),
+		'height' : jQuery('.qr-size').val()
+		});
+
+		// Generate and Output QR Code
+		jQuery('#qrcode').qrcode({width: $('.qr-size').val(),height: jQuery('.qr-size').val(),text: jQuery('.qr-url').val()});
+		
+		var canvas = $('#qrcode canvas');
+	    console.log(canvas);
+		var img = canvas.get(0).toDataURL("image/png");
+		// $('.myimg').attr("src",img);
+		var orderid = jQuery('.qr-url').val();
+
+		jQuery.ajax({
+			type: "post",
+			url: my_ajax_object.ajax_url,
+			data: {action:"get_data", "name":"qrcodegenerated","orderid":orderid,"qrcodedata":img},
+			success: function(data){
+			}
+		});
+});

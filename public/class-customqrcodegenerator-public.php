@@ -96,8 +96,25 @@ class Customqrcodegenerator_Public {
 		 * class.
 		 */
 		wp_enqueue_script( 'main-jquery-js', plugin_dir_url( __FILE__ ) . 'js/jquery-min.js', array( 'jquery' ), $this->version, true );
-		wp_enqueue_script( 'jquery-custom-qr', plugin_dir_url( __FILE__ ) . 'js/jqueryqrcode.js', array( 'jquery' ), $this->version, true );
+		wp_enqueue_script( 'jquery-custom-qr', plugin_dir_url( __FILE__ ) . 'js/jqueryqrcode-public.js', array( 'jquery' ), $this->version, true );
+		wp_enqueue_script( 'ajax-script', plugin_dir_url( __FILE__ ) . 'js/customqrcodegenerator-public.js', array('jquery') );
+      	wp_localize_script( 'ajax-script', 'my_ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/customqrcodegenerator-public.js', array( 'jquery' ), $this->version, true );
 	}
+
+	public function get_data() {
+		$orderid = $_POST['orderid'];
+		$qrcodedata = $_POST['qrcodedata'];
+		update_post_meta( $orderid, '_order_qr_data', $qrcodedata );
+		die;
+	}
+
+	public function rutland_order_success_checkout ( $order_id ) {
+		include('partials/customqrcodegenerator-public-display.php');
+		update_post_meta( $order_id, '_order_qr_data', $_POST['name'] );  
+		
+	}
+
+	
 
 }

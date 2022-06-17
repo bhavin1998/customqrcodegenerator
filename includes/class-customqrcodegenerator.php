@@ -172,6 +172,9 @@ class Customqrcodegenerator {
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		$this->loader->add_action( 'woocommerce_thankyou',$plugin_public, 'rutland_order_success_checkout',99 );
+		$this->loader->add_action( 'wp_ajax_nopriv_get_data',$plugin_public, 'get_data' );
+		$this->loader->add_action( 'wp_ajax_get_data',$plugin_public, 'get_data' );
 
 	}
 
