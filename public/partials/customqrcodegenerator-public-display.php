@@ -21,3 +21,10 @@
     <div id="qrcode"></div>
     <img class="myimg" src="" style="display: none;">
 </div>
+
+<form method="post">
+    <input type="hidden" name="mark_as_received" value="true">
+    <input type="hidden" name="order_id" value="220">
+    <?php wp_nonce_field( 'so_38792085_nonce_action', '_so_38792085_nonce_field' ); ?> 
+    <input type="submit" name="changeorder" value="I Got It!">
+</form>
