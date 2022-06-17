@@ -156,7 +156,10 @@ class Customqrcodegenerator {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-
+		$this->loader->add_filter( 'woocommerce_admin_order_preview_get_order_details',$plugin_admin, 'admin_order_preview_add_custom_meta_data', 10, 2 );
+		$this->loader->add_action( 'woocommerce_admin_order_preview_start',$plugin_admin, 'wp_kama_woocommerce_admin_order_preview_end_action' );
+		$this->loader->add_action( 'woocommerce_admin_order_data_after_shipping_address',$plugin_admin, 'misha_editable_order_meta_shipping' );
+		
 	}
 
 	/**

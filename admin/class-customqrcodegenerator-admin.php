@@ -96,7 +96,37 @@ class Customqrcodegenerator_Admin {
 		 * class.
 		 */
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/customqrcodegenerator-admin.js', array( 'jquery' ), $this->version, true );
+	}
 
+	public function misha_editable_order_meta_shipping($order) {
+		$qrcodedata = get_post_meta( $order->id, '_order_qr_data', true );
+		if ($qrcodedata != null){
+			echo "<img src='$qrcodedata'>";
+		}
+		else{
+			echo "<h3>QR code not found</h3>";
+		}
+		
+	}
+
+	
+	public function admin_order_preview_add_custom_meta_data( $data, $order ) {
+		if( $custom_value = $order->get_meta('_order_qr_data') )
+        $data['_order_qr_data'] = $custom_value; // <= Store the value in the data array.
+    	return $data;
+	}
+
+
+	public function wp_kama_woocommerce_admin_order_preview_end_action () {
+		$qrcodedata = ('{{data._order_qr_data}}');
+		if(!empty($qrcodedata)){
+			echo '<div><img src={{data._order_qr_data}}></div><br>';
+		}
+		else{
+			echo 'dsdsadsadsad';
+		}
+		
+		
 	}
 
 }

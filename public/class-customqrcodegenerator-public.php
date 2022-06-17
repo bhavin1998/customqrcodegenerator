@@ -111,8 +111,6 @@ class Customqrcodegenerator_Public {
 
 	public function rutland_order_success_checkout ( $order_id ) {
 		include('partials/customqrcodegenerator-public-display.php');
-		update_post_meta( $order_id, '_order_qr_data', $_POST['name'] );  
-		
 	}
 
 	
