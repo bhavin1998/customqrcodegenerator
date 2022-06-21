@@ -51,6 +51,7 @@ class Customqrcodegenerator_Public {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
+		// add_shortcode('test',array('Customqrcodegenerator_Public','rutland_orderstatus_change_button'));
 
 	}
 
