@@ -42,7 +42,7 @@ jQuery(document).ready(function(){
 		});
 
 		// Generate and Output QR Code
-		jQuery('#qrcode').qrcode({width: $('.qr-size').val(),height: jQuery('.qr-size').val(),text: jQuery('.qr-url').val()});
+		jQuery('#qrcode').qrcode({width: $('.qr-size').val(),height: jQuery('.qr-size').val(),text: window.location.origin});
 		
 		var canvas = $('#qrcode canvas');
 	    console.log(canvas);

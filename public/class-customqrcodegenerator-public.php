@@ -122,27 +122,7 @@ class Customqrcodegenerator_Public {
 		}
 	}
 
-	// public function so_38792085_form_handler(){
-
-	// 	// not a "mark as received" form submission
-	// 	if ( ! isset( $_POST['mark_as_received'] ) ){
-	// 		return;
-	// 	}
-	
-	// 	// basic security check
-	// 	if ( ! isset( $_POST['_so_38792085_nonce_field'] ) || ! wp_verify_nonce( $_POST['_so_38792085_nonce_field'], 'so_38792085_nonce_action' ) ) {   
-	// 		return;
-	// 	} 
-	
-	// 	// make sure order id is submitted
-	// 	if ( ! isset( $_POST['order_id'] ) ){
-	// 		$order_id = 220;
-	// 		$order = wc_get_order( 220 );
-	// 		$order->update_status( "completed" );
-	// 		return;
-	// 	}   
-	// }
-
-	
-
+	public function rutland_orderstatus_change_button(){
+		include('partials/custom_orderstatus_change_button.php');
+	}
 }
