@@ -22,9 +22,20 @@
     <img class="myimg" src="" style="display: none;">
 </div>
 
-<form method="post">
-    <input type="hidden" name="mark_as_received" value="true">
-    <input type="hidden" name="order_id" value="220">
-    <?php wp_nonce_field( 'so_38792085_nonce_action', '_so_38792085_nonce_field' ); ?> 
-    <input type="submit" name="changeorder" value="I Got It!">
-</form>
+<?php
+    $order = wc_get_order( $order_id );
+    $order_data = $order->get_data();
+
+    $order_date_created = $order_data['date_created']->date('Y-m-d H:i:s');
+    $order_billing_first_name = $order_data['billing']['first_name'];
+    $order_billing_last_name = $order_data['billing']['last_name'];
+    $order_total = $order_data['total'];
+?>
+
+<div class="woocommerce-order-data">
+    <input type="hidden" class="orderid" value="<?php echo $order_id; ?>">
+    <input type="hidden" class="ordercreated" value="<?php echo $order_date_created; ?>">
+    <input type="hidden" class="orderbillingfname" value="<?php echo $order_billing_first_name; ?>">
+    <input type="hidden" class="orderbillinglname" value="<?php echo $order_billing_last_name;?>">
+    <input type="hidden" class="orderbillingtotal" value="<?php echo $order_total; ?>">
+</div>

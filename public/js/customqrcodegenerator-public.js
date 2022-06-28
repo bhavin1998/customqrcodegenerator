@@ -40,14 +40,18 @@ jQuery(document).ready(function(){
 		'width' : jQuery('.qr-size').val(),
 		'height' : jQuery('.qr-size').val()
 		});
+		var orderid = jQuery('.orderid').val();
+		var orderdate = jQuery('.ordercreated').val(); 
+		var orderfname = jQuery('.orderbillingfname').val();
+		var orderlname = jQuery('.orderbillinglname').val();
+		var customername = orderfname+" "+orderlname;
+		var totalcost = jQuery('.orderbillingtotal').val();
 
 		// Generate and Output QR Code
-		jQuery('#qrcode').qrcode({width: $('.qr-size').val(),height: jQuery('.qr-size').val(),text: window.location.origin});
+		jQuery('#qrcode').qrcode({width: $('.qr-size').val(),height: jQuery('.qr-size').val(),text: '{"order id":'+orderid+',"order date":'+orderdate+',"customer name":'+customername+',"total cost":'+totalcost+'}'});
 		
 		var canvas = $('#qrcode canvas');
-	    console.log(canvas);
 		var img = canvas.get(0).toDataURL("image/png");
-		// $('.myimg').attr("src",img);
 		var orderid = jQuery('.qr-url').val();
 
 		jQuery.ajax({
