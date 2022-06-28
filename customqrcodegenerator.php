@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       Custom QR code Generator
  * Plugin URI:        #
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       This plugin helps to generate the QR code after successfully placed order. The QR contains customer's order informations.
  * Version:           1.0.0
  * Author:            Bhavin Gediya
  * Author URI:        #
